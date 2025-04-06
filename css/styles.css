@@ -23,7 +23,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  overflow-x: hidden;
 }
 
 #theme-toggle {
@@ -35,29 +34,26 @@ body {
   border: none;
   color: var(--text-color);
   cursor: pointer;
-  padding: 0.5rem;
+  z-index: 10;
 }
 
 .container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 93.5vh;
   padding: 2rem 1rem;
-}
-
-.links-container {
-  flex-grow: 1;
+  min-height: 100vh;
 }
 
 .profile-img {
   border-radius: 50%;
   width: 125px;
+  height: auto;
+  max-width: 100%;
 }
 
 .profile-name {
-  font-size: clamp(1.25rem, 5vw, 1.75rem);
+  font-size: 1.5rem;
   margin-bottom: 0.25rem;
   text-align: center;
 }
@@ -66,6 +62,7 @@ body {
   font-size: 1rem;
   margin-bottom: 1rem;
   text-align: center;
+  max-width: 600px;
   padding: 0 1rem;
 }
 
@@ -85,7 +82,7 @@ body {
   position: relative;
   text-decoration: none;
   transition: transform 0.4s ease;
-  font-size: 1rem;
+  overflow: hidden;
 }
 
 .social-link:hover {
@@ -96,6 +93,8 @@ body {
 
 .social-icon {
   width: 30px;
+  height: auto;
+  max-height: 100%;
   position: absolute;
   left: 15px;
 }
@@ -126,6 +125,7 @@ footer {
   color: var(--text-color);
 }
 
+/* Tablet screens */
 @media screen and (max-width: 768px) {
   .profile-name {
     font-size: 1.3rem;
@@ -133,42 +133,31 @@ footer {
 
   .bio {
     font-size: 0.95rem;
+    padding: 0 0.5rem;
   }
 
   .social-link {
     font-size: 0.9rem;
     padding-left: 50px;
+    height: auto;
+    min-height: 55px;
   }
 
   .social-icon {
     width: 25px;
     left: 12px;
   }
-
-  #theme-toggle {
-    font-size: 2rem;
-  }
 }
 
+/* Mobile screens */
 @media screen and (max-width: 480px) {
-  .container {
-    padding: 1rem 0.5rem;
-  }
-
-  .profile-img {
-    width: 100px;
-  }
-
-  .bio {
-    font-size: 0.9rem;
-    padding: 0 1rem;
-  }
-
   .social-link {
     flex-direction: row;
-    padding-left: 45px;
+    justify-content: flex-start;
+    padding-left: 50px;
     height: auto;
-    font-size: 0.85rem;
+    min-height: 55px;
+    font-size: 0.9rem;
   }
 
   .social-icon {
@@ -177,12 +166,16 @@ footer {
   }
 
   .email-wrapper {
-    flex-direction: column;
-    gap: 4px;
+    flex-direction: row;
+    gap: 6px;
   }
 
-  #theme-toggle {
-    font-size: 2rem;
-    padding: 0.5rem;
+  .bio {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+  }
+
+  .profile-name {
+    font-size: 1.2rem;
   }
 }
